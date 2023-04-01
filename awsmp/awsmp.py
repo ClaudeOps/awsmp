@@ -16,6 +16,7 @@ class AwsMp:
     """
     AWS Multithreaded Processor
     """
+
     _showprogress = False
     _mp_use_processes = False
     _mp_workers = None  # use the default definded by python
@@ -85,16 +86,16 @@ class AwsMp:
 
     @property
     def showprogress(self):
-        """ return current showprogress setting """
+        """return current showprogress setting"""
         return self._showprogress
 
     @showprogress.setter
     def showprogress(self, value: bool):
-        """ set progress bar visibility """
+        """set progress bar visibility"""
         self._showprogress = value
 
     def awsmp(self, func, profile_filter=".*", regions=None):
-        """ Run function agains all profiles and regions """
+        """Run function agains all profiles and regions"""
         results = []
         exceptions = []
         region_list = []
