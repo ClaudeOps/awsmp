@@ -1,0 +1,9 @@
+bump2version
+watchdog
+tox
+coverage
+Sphinx
+twine
+black
+flake8
+pylint
