@@ -2,9 +2,9 @@
 import configparser
 import os
 import re
-from concurrent.futures import as_completed
-from concurrent.futures import ProcessPoolExecutor
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import as_completed  # isort:skip
+from concurrent.futures import ProcessPoolExecutor  # isort:skip
+from concurrent.futures import ThreadPoolExecutor  # isort:skip
 from itertools import product
 
 
