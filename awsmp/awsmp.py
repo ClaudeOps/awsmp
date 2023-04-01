@@ -2,11 +2,8 @@
 import configparser
 import os
 import re
-from concurrent.futures import as_completed  # isort:skip
-from concurrent.futures import ProcessPoolExecutor  # isort:skip
-from concurrent.futures import ThreadPoolExecutor  # isort:skip
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 from itertools import product
-
 
 import boto3
 import enlighten
