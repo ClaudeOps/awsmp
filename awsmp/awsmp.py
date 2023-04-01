@@ -13,13 +13,22 @@ import enlighten
 
 
 class AwsMp:
+    """
+    AWS Multithreaded Processor
+    """
     _showprogress = False
     _mp_use_processes = False
     _mp_workers = None  # use the default definded by python
 
-    def __init__(self, show_progress=False, mp_workers=None,):
+    def __init__(
+        self,
+        use_processes=False,
+        mp_workers=None,
+        show_progress=False,
+    ):
         self._showprogress = show_progress
         self._mp_workers = mp_workers
+        self._mp_use_processes = use_processes
 
     def _get_all_regions(self, profile):
         result = []
@@ -74,15 +83,18 @@ class AwsMp:
                     progress_bar.count = done_count
                     progress_bar.refresh()
 
-    def awsmp_threaded(self, func, profile_filter=".*", regions=None):
-        self._mp_use_processes = False
-        self._awsmp(func, profile_filter, regions,)
+    @property
+    def showprogress(self):
+        """ return current showprogress setting """
+        return self._showprogress
 
-    def awsmp_processes(self, func, profile_filter=".*", regions=None):
-        self._mp_use_processes = True
-        self._awsmp(func, profile_filter, regions)
+    @showprogress.setter
+    def showprogress(self, value: bool):
+        """ set progress bar visibility """
+        self._showprogress = value
 
-    def _awsmp(self, func, profile_filter=".*", regions=None):
+    def awsmp(self, func, profile_filter=".*", regions=None):
+        """ Run function agains all profiles and regions """
         results = []
         exceptions = []
         region_list = []
